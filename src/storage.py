@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+# src/storage.py
+import csv
+import os
+
+
+# ------------------- CSV READ ------------------- #
+def read_csv(filename):
+    """Read data from a CSV file and return a list of dictionaries."""
+    if not os.path.exists(filename):
+        return []
+    with open(filename, 'r', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        return list(reader)
+
+
+# ------------------- CSV WRITE ------------------- #
+def write_csv(filename, fieldnames, data):
+    """Write a list of dictionaries to a CSV file."""
+    dirpath = os.path.dirname(filename)
+    if dirpath:
+        os.makedirs(dirpath, exist_ok=True)
+    with open(filename, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(data)
+
+
+# ------------------- APPEND SINGLE ROW ------------------- #
+def append_csv(filename, fieldnames, row):
+    """Append a single dictionary row to an existing CSV file."""
+    dirpath = os.path.dirname(filename)
+    if dirpath:
+        os.makedirs(dirpath, exist_ok=True)
+    file_exists = os.path.exists(filename)
+    with open(filename, 'a', newline='', encoding='utf-8') as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        if not file_exists:
+            writer.writeheader()
+        writer.writerow(row)
