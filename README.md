@@ -204,9 +204,9 @@ You can store terminal screenshots inside the `docs/screenshots/` folder for doc
 ---
 
 ## 🧑‍💻 Author
-**Govinda**  
+Sri harshith 
 🎓 *Inventory Management & Billing System (Python Console Project)*  
-🔗 GitHub: [https://github.com/your-username](https://github.com/your-username)
+🔗 GitHub: [https://github.com/Harshit033]
 
 
 ---
